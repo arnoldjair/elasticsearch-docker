@@ -27,4 +27,16 @@ bin/plugin install https://github.com/couchbaselabs/elasticsearch-transport-couc
 echo "couchbase.username: Administrator" >> config/elasticsearch.yml
 echo "couchbase.password: password" >> config/elasticsearch.yml
 
-elasticsearch -Des.insecure.allow.root=true
+elasticsearch -Des.insecure.allow.root=true &
+
+printf "Waiting for ElasticSearch to start\n"
+
+while [ $(curl -s -o /dev/null -I -w "%{http_code}" http://0.0.0.0:9200/) -ne "200" ]; do
+	true
+done
+
+printf "ElasticSearch started\n"
+
+curl -XPUT http://0.0.0.0:9200/_template/couchbase -d @plugins/transport-couchbase/couchbase_template.json
+
+while true; do sleep 1000; done
