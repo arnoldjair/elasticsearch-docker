@@ -22,7 +22,7 @@ fi
 # for example a `bash` shell to explore this image
 exec "$@"
 
-bin/plugin install https://github.com/couchbaselabs/elasticsearch-transport-couchbase/releases/download/2.2.3.5/elasticsearch-transport-couchbase-2.2.3.5.zip
+bin/plugin install https://github.com/couchbaselabs/elasticsearch-transport-couchbase/releases/download/2.2.4.0/elasticsearch-transport-couchbase-2.2.4.0.zip
 
 echo "couchbase.username: Administrator" >> config/elasticsearch.yml
 echo "couchbase.password: password" >> config/elasticsearch.yml
