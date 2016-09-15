@@ -37,6 +37,4 @@ done
 
 printf "ElasticSearch started\n"
 
-curl -XPUT http://0.0.0.0:9200/_template/couchbase -d @plugins/transport-couchbase/couchbase_template.json
-
 while true; do sleep 1000; done
