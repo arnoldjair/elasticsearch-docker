@@ -12,7 +12,7 @@ fi
 if [ "$1" = 'elasticsearch' -a "$(id -u)" = '0' ]; then
 	# Change the ownership of /usr/share/elasticsearch/data to elasticsearch
 	chown -R elasticsearch:elasticsearch /usr/share/elasticsearch/data
-	
+
 	set -- gosu elasticsearch "$@"
 	#exec gosu elasticsearch "$BASH_SOURCE" "$@"
 fi
@@ -22,10 +22,10 @@ fi
 # for example a `bash` shell to explore this image
 exec "$@"
 
-bin/plugin install https://github.com/couchbaselabs/elasticsearch-transport-couchbase/releases/download/2.2.4.0/elasticsearch-transport-couchbase-2.2.4.0.zip
+#bin/plugin install https://github.com/couchbaselabs/elasticsearch-transport-couchbase/releases/download/2.2.4.0/elasticsearch-transport-couchbase-2.2.4.0.zip
 
-echo "couchbase.username: Administrator" >> config/elasticsearch.yml
-echo "couchbase.password: password" >> config/elasticsearch.yml
+#echo "couchbase.username: Administrator" >> config/elasticsearch.yml
+#echo "couchbase.password: password" >> config/elasticsearch.yml
 
 elasticsearch -Des.insecure.allow.root=true &
 
